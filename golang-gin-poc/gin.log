@@ -1,0 +1,32 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] Loaded HTML Templates (4): 
+	- 
+	- footer.html
+	- header.html
+	- index.html
+
+[GIN-debug] GET    /api/videos               --> main.main.func1 (4 handlers)
+[GIN-debug] POST   /api/videos               --> main.main.func2 (4 handlers)
+[GIN-debug] PUT    /api/videos/:id           --> main.main.func3 (4 handlers)
+[GIN-debug] DELETE /api/videos/:id           --> main.main.func4 (4 handlers)
+[GIN-debug] GET    /view/videos              --> golang-gin-poc/controller.VideoController.ShowAll-fm (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+::1 - [19 Dec 23 21:18 CST] POST /api/videos 200 3.600176ms 
+::1 - [19 Dec 23 21:19 CST] GET /api/videos 200 1.221465ms 
+::1 - [19 Dec 23 21:19 CST] GET /api/videos 200 327.234µs 
+::1 - [19 Dec 23 21:23 CST] PUT /api/videos/1 200 1.367427ms 
+::1 - [19 Dec 23 21:24 CST] GET /api/videos 200 483.363µs 
+::1 - [19 Dec 23 21:24 CST] GET /api/videos 200 365.753µs 
+::1 - [19 Dec 23 21:24 CST] GET /api/videos 200 333.591µs 
+::1 - [19 Dec 23 21:24 CST] GET /api/videos 200 360.111µs 
+::1 - [19 Dec 23 21:27 CST] DELETE /api/videos/1 401 3.49µs 
+::1 - [19 Dec 23 21:27 CST] GET /api/videos 200 364.607µs 
+::1 - [19 Dec 23 21:28 CST] DELETE /api/videos/1 200 1.477046ms 
+::1 - [19 Dec 23 21:28 CST] GET /api/videos 200 188.361µs 
