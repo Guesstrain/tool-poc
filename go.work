@@ -1,6 +1,7 @@
 go 1.20
 
 use (
+	./rest-api-poc
 	./tcp-server-poc
 	./tcp-server-poc/cmd/server
 )
