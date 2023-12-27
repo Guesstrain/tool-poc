@@ -4,6 +4,7 @@ use (
 	./go-kafka-poc
 	./golang-docker-poc
 	./golang-gin-poc
+	./redis-gofiber-poc/api
 	./rest-api-poc
 	./tcp-server-poc
 	./tcp-server-poc/cmd/server
