@@ -1,6 +1,7 @@
 go 1.20
 
 use (
+	./go-es-poc
 	./go-kafka-poc
 	./golang-docker-poc
 	./golang-gin-poc
