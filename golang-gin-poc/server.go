@@ -15,7 +15,11 @@ import (
 var (
 	videoRepository repository.VideoRepository = repository.NewVideoRepository()
 	VideoService    service.VideoService       = service.New(videoRepository)
+	loginservice    service.LoginService       = service.NewLoginService()
+	jwtService      service.JWTService         = service.NewJWTService()
+
 	VideoController controller.VideoController = controller.New(VideoService)
+	loginController controller.LoginController = controller.NewLoginController(loginservice, jwtService)
 )
 
 func setupLogOutput() {
@@ -26,17 +30,28 @@ func setupLogOutput() {
 func main() {
 	defer videoRepository.CloseDB()
 
-	setupLogOutput()
-
 	server := gin.New()
 
 	server.Static("css", "./templates/css")
 
 	server.LoadHTMLGlob("template/*.html")
 
-	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
+	server.Use(gin.Recovery(), gin.Logger())
 
-	apiRoutes := server.Group("/api")
+	//Login Endpoint: Authentication + Token creation
+	server.POST("/login", func(ctx *gin.Context) {
+		token := loginController.Login(ctx)
+		if token != "" {
+			ctx.JSON(http.StatusOK, gin.H{
+				"token": token,
+			})
+		} else {
+			ctx.JSON(http.StatusUnauthorized, nil)
+		}
+	})
+
+	// JWT Authorization Middleware applies to "/api" only.
+	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
 			ctx.JSON(200, VideoController.FindAll())
