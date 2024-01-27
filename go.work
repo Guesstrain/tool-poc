@@ -9,6 +9,7 @@ use (
 	./grpc-api-poc
 	./redis-gofiber-poc/api
 	./rest-api-poc
+	./simple-blockchain-go
 	./tcp-server-poc
 	./tcp-server-poc/cmd/server
 )
