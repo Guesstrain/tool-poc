@@ -7,6 +7,7 @@ use (
 	./golang-docker-poc
 	./golang-gin-poc
 	./grpc-api-poc
+	./pow-go
 	./redis-gofiber-poc/api
 	./rest-api-poc
 	./simple-blockchain-go
